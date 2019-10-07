@@ -79,7 +79,7 @@ j) frida: https://www.frida.re/docs/android/
             o) apktool d path/to/your/app_name.apk (decompiles .dex files to .smali)
             o) apktool d --no-src app_name.apk (does NOT decompile .dex files to .smali)
         [INFO]
-            -) not all files do get extracted: i.e certs + signature files & more are nissing
+            -) not all files do get extracted: i.e certs + signature files & more are missing
 
     DEX2JAR
         [COMMANDS]
@@ -144,7 +144,7 @@ j) frida: https://www.frida.re/docs/android/
         ?) https://www.ssllabs.com/ssltest/
 
 <i>///////////////////////////////
-1d) ANALYSE ANDROIDMANIFEST.XML
+1d) ANALYZE ANDROIDMANIFEST.XML
 ///////////////////////////////</i>
 
     [COMMANDS]
@@ -319,7 +319,7 @@ j) frida: https://www.frida.re/docs/android/
             o) check proxy and look for suspicious behaviour, requests, new/different endpoints & so on ...
 
 <i>/////////////////////////
-3c) ANALYSE LOCAL STORAGE
+3c) ANALYZE LOCAL STORAGE
 /////////////////////////</i>
 
     [COMMANDS]
@@ -432,7 +432,7 @@ j) frida: https://www.frida.re/docs/android/
                 DROZER
                     o) run app.service.info -a com.x.x.x (list details on exported services)
                     o) run app.service.send com.your.app com.google.firebase.iid.FirebaseInstanceIdService baaadText 2 3
-                        ?) if an error occurs --&gt; analyse the decompiled source code (if available) and try other values until success
+                        ?) if an error occurs --&gt; analyze the decompiled source code (if available) and try other values until success
             
             [THINGS TO REPORT]
                 !) Extracted sensitive data 
