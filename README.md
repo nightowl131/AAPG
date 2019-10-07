@@ -8,7 +8,7 @@ To improve this guide, I would highly appreciate your help with everything you h
 I followed this <a href="https://www.owasp.org/index.php/OWASP_Mobile_Security_Testing_Guide" alt="owasp-url">OWASP Mobile Security Testing Guide</a> and tried to summarize it. 
 <br>
 <br>
-Download the aapg.txt <a href="https://raw.githubusercontent.com/nightowl131/AAPG/master/aapg.txt">here</a>
+Download the aapg.txt <a href="https://raw.githubusercontent.com/nightowl131/AAPG/master/aapg.txt" target="_blank">here</a>
 </p>
 
 <pre>
