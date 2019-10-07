@@ -149,7 +149,7 @@ i) apk decompiler for lazy: https://github.com/b-mueller/apkx
             o) adb backup -all -apk -shared (full backup)
             o) adb backup com.x.x.x (single app backup)
             o) decode unencrypted backup
-                o) xxd ANDROID BACKUP (check if encrypted --&gt; if you see "none" --&gt; not encrypted)
+                o) xxd backup.ab (check if encrypted --&gt; if you see "none" --&gt; not encrypted)
                 o) dd if=all-data.ab bs=24 skip=1 | openssl zlib -d &gt; all-data.tar
                     o) tar xvf all-data.tar (extract tar-archive)
         
