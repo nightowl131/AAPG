@@ -16,28 +16,22 @@ Download the aapg.txt <a href="https://raw.githubusercontent.com/nightowl131/AAP
 ============================== 0) Used Tools ==============================
 ===========================================================================</b>
 
-a) apktool 
-    -) https://ibotpeaches.github.io/Apktool/install/
+a) <a href="https://ibotpeaches.github.io/Apktool/install/" target="_blank">apktool</a>
     -) AUR package: yay -S android-apktool
-b) dex2jar 
-    -) https://github.com/pxb1988/dex2jar
-c) jd-gui 
-    -) https://github.com/java-decompiler/jd-gui
-d) jadx 
-    -) https://github.com/skylot/jadx
-e) adb
+b) <a href="https://github.com/pxb1988/dex2jar" target="_blank">dex2jar</a>
+c) <a href="https://github.com/java-decompiler/jd-gui" target="_blank">jd-gui</a>
+d) <a href="https://github.com/skylot/jadx" target="_blank">jadx</a>
+e) <a href="https://en.droidwiki.org/wiki/Android_Debug_Bridge" target="_blank">adb</a>
     -) sudo pacman -S android-tools
     -) I personally would recommend installing android-studio (it comes with the SDK - including all platform-tools)
         o) sudo pacman -S andriod-studio
-f) bettercap
+f) <a href="https://www.bettercap.org/legacy/index.html#document-install" target="_blank">bettercap</a>
     -) sudo pacman -S bettercap
-    -) https://www.bettercap.org/legacy/index.html#document-install
-g) dnSpy - .NET decompiler (in case of Xamarin Apps)
-    -) https://github.com/0xd4d/dnSpy 
-h) enjarify
-    -) https://github.com/google/enjarify
+g) <a href="https://github.com/0xd4d/dnSpy" target="_blank">dnSpy</a>
+    -) .NET decompiler (in case of Xamarin Apps)
+h) <a href="https://github.com/google/enjarify" target="_blank">enjarify</a>
 i) apk decompiler for lazy: https://github.com/b-mueller/apkx
-j) frida: https://www.frida.re/docs/android/
+j) <a href="https://www.frida.re/docs/android/" target="_blank">frida</a>
 
 <b>==========================================================================
 ===================== 1) MANUAL STATIC ANALYSIS ==========================
@@ -54,13 +48,12 @@ j) frida: https://www.frida.re/docs/android/
             o) adb pull /data/data/com.x.x.x/app_name.apk (copy the apk file to your system)
 
     APK DOWNLOADER
-        1) Search for your application @ https://play.google.com/store
+        1) Search for your application @ <a href="https://play.google.com/store" target="_blank">https://play.google.com/store</a>
         2) Copy URL (i.e: https://play.google.com/store/apps/details?id=com.whatsapp)
         3) Paste URL into one of the downloaders below or one of your own choice: 
-            o) https://apps.evozi.com/apk-downloader/
-            o) https://apkcombo.com (recommended)
-            o) https://www.apkmirror.com
-
+            o) <a href="https://apps.evozi.com/apk-downloader/" target="_blank">evozi</a>
+            o) <a href="https://apkcombo.com" target="_blank">apkcombo</a> (recommended)
+            o) <a href="https://www.apkmirror.com" target="_blank">apkmirror</a>
 <i>/////////////////
 1b) DECOMPILE APK
 /////////////////</i>
@@ -139,9 +132,9 @@ j) frida: https://www.frida.re/docs/android/
             -) &lt;domain-config cleartextTrafficPermitted="true"&gt;
 
     [MORE DETAILS]
-        ?) https://developer.android.com/reference/android/Manifest.permission.html
-        ?) https://developer.android.com/training/articles/security-ssl#CommonProblems
-        ?) https://www.ssllabs.com/ssltest/
+        ?) <a href="https://developer.android.com/reference/android/Manifest.permission.html" target="_blank">Manifest permissions</a>
+        ?) <a href="https://developer.android.com/training/articles/security-ssl#CommonProblems" target="_blank">SSL common problems</a>
+        ?) <a href="https://www.ssllabs.com/ssltest/" target="_blank">ssltest</a>
 
 <i>///////////////////////////////
 1d) ANALYZE ANDROIDMANIFEST.XML
@@ -171,7 +164,7 @@ j) frida: https://www.frida.re/docs/android/
             -) &lt;uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/&gt;
 
         DEBUG APPLICATION
-            -) Debugging running apps or processes with GDB: https://source.android.com/devices/tech/debug/gdb
+            -) Debugging running apps or processes with <a href="https://source.android.com/devices/tech/debug/gdb" target="_blank">GDB</a> 
         
     [THINGS TO REPORT]
         !) Wrong version/requirements specified
@@ -184,10 +177,9 @@ j) frida: https://www.frida.re/docs/android/
             !) "android:protectionLevel" was not set properly (&lt;permission android:name="my_custom_permission_name" android:protectionLevel="signature"/&gt;)
             !) missing android:permission (permission tags limit exposure to other apps)
     [MORE DETAILS]
-        ?) https://developer.android.com/guide/topics/manifest/application-element
-        ?) https://pentestlab.blog/2017/01/24/security-guidelines-for-android-manifest-files/
-        ?) https://developer.android.com/studio/releases/platforms
-
+        ?) <a href="https://developer.android.com/guide/topics/manifest/application-element" target="_blank">Application elements</a>
+        ?) <a href="https://pentestlab.blog/2017/01/24/security-guidelines-for-android-manifest-files/" target="_blank">Security guidelines for AndroidManifest</a>
+        ?) <a href="https://developer.android.com/studio/releases/platforms" target="_blank">Android Platform Releases</a>
 
 <i>////////////////////////
 1e) SOURCE CODE ANALYSIS
@@ -232,10 +224,10 @@ j) frida: https://www.frida.re/docs/android/
 ==========================================================================</b>
 
     [RECOMMENDED TOOLS] 
-        -) MobSF (https://github.com/MobSF/Mobile-Security-Framework-MobSF)
-        -) quark (https://github.com/linkedin/qark/)
-        -) AndroBugs (https://github.com/AndroBugs/AndroBugs_Framework)
-        -) JAADAS (https://github.com/flankerhqd/JAADAS)
+        -) <a href="https://github.com/MobSF/Mobile-Security-Framework-MobSF" target="_blank">MobSF</a>
+        -) <a href="https://github.com/linkedin/qark/" target="_blank">quark</a>
+        -) <a href="https://github.com/AndroBugs/AndroBugs_Framework" target="_blank">AndroBugs</a>
+        -) <a href="https://github.com/flankerhqd/JAADAS" target="_blank">JAADAS</a>
 
     [INFO]
         -) At this point you have to google yourself how to install and use them ;)
@@ -247,23 +239,21 @@ j) frida: https://www.frida.re/docs/android/
 <i>/////////////////
 3a) prerequisites
 /////////////////</i>
-        
+</a>
     [PROXY]
-        -) Install Burp-Suite (recommended): https://portswigger.net/burp/communitydownload
-    
+        -) Install <a href="https://portswigger.net/burp/communitydownload" target="_blank">Burp-Suite</a> (recommended)
+
         [AVD || ROOTED DEVICE]
             -) cert installation:
-                ?) BEFORE Android 7 (Nougat): https://support.portswigger.net/customer/portal/articles/1841102-installing-burp-s-ca-certificate-in-an-android-device
-                ?) Android 7 or higher: https://blog.ropnop.com/configuring-burp-suite-with-android-nougat/
+                ?) <a href="https://support.portswigger.net/customer/portal/articles/1841102-installing-burp-s-ca-certificate-in-an-android-device" target="_blank">BEFORE Android 7 (Nougat)</a>
+                ?) <a href="https://blog.ropnop.com/configuring-burp-suite-with-android-nougat/" target="_blank">Android 7 or higher</a>
             -) Proxy setup
-                ?) Virtual device: https://developer.android.com/studio/run/emulator-networking#proxy
-                ?) Physical phone: https://www.howtogeek.com/295048/how-to-configure-a-proxy-server-on-android/
-        
+                ?) <a href="https://developer.android.com/studio/run/emulator-networking#proxy" target="_blank">Virtual device</a>
+                ?) <a href="https://www.howtogeek.com/295048/how-to-configure-a-proxy-server-on-android/" target="_blank">Physical phone</a>
+
         [ADDITIONAL TOOLS]
-            -) Install drozer on host & phone:
-                ?) https://labs.mwrinfosecurity.com/tools/drozer/
-            -) Android SDK:
-                ?) http://www.androiddocs.com/sdk/installing/index.html
+            -) <a href="https://labs.mwrinfosecurity.com/tools/drozer/" target="_blank">Install drozer on host & phone</a>
+            -) <a href="http://www.androiddocs.com/sdk/installing/index.html" target="_blank">Android SDK</a>
                 !) adb might be located @ Android/Sdk/platform-tools/ (Linux)
         
         [FUNCTIONALITY TEST]
@@ -331,8 +321,8 @@ j) frida: https://www.frida.re/docs/android/
                     o) SELECT sql FROM sqlite_master WHERE tbl_name = 'insert_table_name' AND type = 'table'; (see table creation query -&gt; reveals columns as well)
             o) For .realm files:
                 o) adb pull path/to/database/on/phone/name.realm path/to/store/db/on/pc/
-                o) open within RealmStudio (https://docs.realm.io/sync/realm-studio)
-    
+                o) open within <a href="https://docs.realm.io/sync/realm-studio" target="_blank">RealmStudio</a>
+
     [INFO]
         COMMON LOCATIONS OF SECRETS/INFORMATION
             -) resources (i.e: res/values/strings.xml)
@@ -355,7 +345,7 @@ j) frida: https://www.frida.re/docs/android/
         !) Wrong file permissions set (also have a look @ 1e)
 
     [MORE DETAILS]
-        ?) https://steemit.com/penetration/@surajraghuvanshi/data-storage-security-on-android
+        ?) <a href="https://steemit.com/penetration/@surajraghuvanshi/data-storage-security-on-android" target="_blank">data storage security on android</a>
 
 <i>//////////////////
 3d) ATTACK SURFACE
@@ -440,9 +430,9 @@ j) frida: https://www.frida.re/docs/android/
     ------------
     MORE DETAILS
     ------------
-        ?) http://showmeshell.top/2018/09/28/How-to-use-drozer/ (for further details translate page)
-        ?) https://mobiletools.mwrinfosecurity.com/Using-Drozer-for-application-security-assessments/
-        ?) https://cyberincision.com/2017/09/13/android-app-hacking-with-drozer-usage/
+        ?) <a href="http://showmeshell.top/2018/09/28/How-to-use-drozer/" target="_blank">How to use drozer</a> (for further details translate page)
+        ?) <a href="https://mobiletools.mwrinfosecurity.com/Using-Drozer-for-application-security-assessments/" target="_blank">Using drozer</a>
+        ?) <a href="https://cyberincision.com/2017/09/13/android-app-hacking-with-drozer-usage/" target="_blank">App hacking with drozer</a>
 
 <i>////////////////
 3e) LOG ANALYSIS
@@ -499,7 +489,7 @@ j) frida: https://www.frida.re/docs/android/
         13) Have fun ;) 
 
         [INFO]
-            -) Guide I excerpted - worked multiple times at work: https://null-byte.wonderhowto.com/how-to/embed-metasploit-payload-original-apk-file-part-2-do-manually-0167124/
+            -) Guide I excerpted - worked multiple times at work: <a href="https://null-byte.wonderhowto.com/how-to/embed-metasploit-payload-original-apk-file-part-2-do-manually-0167124/" target="_blank">wonderhowto</a>
 
     XAMARIN APPS
         ?) !!! TBD !!! - dll-injection? I was not able to find anything useful - appreciate any input here!! 
