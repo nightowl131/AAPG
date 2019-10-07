@@ -15,8 +15,6 @@ f) bettercap (sudo pacman -S bettercap)
 g) dnSpy - .NET decompiler (https://github.com/0xd4d/dnSpy) (in case of Xamarin Apps)
 h) enjarify (https://github.com/google/enjarify)
 i) apk decompiler for lazy (https://github.com/b-mueller/apkx)
-j) frida (https://www.frida.re/docs/android/)
-
 
 ==========================================================================
 ===================== 1) MANUAL STATIC ANALYSIS ==========================
@@ -137,7 +135,7 @@ j) frida (https://www.frida.re/docs/android/)
             o) adb backup -all -apk -shared (full backup)
             o) adb backup com.x.x.x (single app backup)
             o) decode unencrypted backup
-                o) xxd ANDROID BACKUP (check if encrypted --> if you see "none" --> not encrypted)
+                o) xxd backup.ab (check if encrypted --> if you see "none" --> not encrypted)
                 o) dd if=all-data.ab bs=24 skip=1 | openssl zlib -d > all-data.tar
                     o) tar xvf all-data.tar (extract tar-archive)
         
