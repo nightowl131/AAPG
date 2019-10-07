@@ -238,7 +238,7 @@ i) apk decompiler for lazy: https://github.com/b-mueller/apkx
 <i>/////////////////
 3a) prerequisites
 /////////////////</i>
-</a>
+
     [PROXY]
         -) Install <a href="https://portswigger.net/burp/communitydownload" target="_blank">Burp-Suite</a> (recommended)
 
