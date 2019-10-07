@@ -31,7 +31,6 @@ g) <a href="https://github.com/0xd4d/dnSpy" target="_blank">dnSpy</a>
     -) .NET decompiler (in case of Xamarin Apps)
 h) <a href="https://github.com/google/enjarify" target="_blank">enjarify</a>
 i) apk decompiler for lazy: https://github.com/b-mueller/apkx
-j) <a href="https://www.frida.re/docs/android/" target="_blank">frida</a>
 
 <b>==========================================================================
 ===================== 1) MANUAL STATIC ANALYSIS ==========================
