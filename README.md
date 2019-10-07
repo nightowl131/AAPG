@@ -65,7 +65,7 @@ j) frida: https://www.frida.re/docs/android/
 1b) DECOMPILE APK
 /////////////////</i>
 
-    UNZIP
+    UNZIP (I'm aware this is just unpacking - not decompiling)
         [COMMANDS]
             o) unzip app_name.apk
         [INFO]
@@ -78,7 +78,7 @@ j) frida: https://www.frida.re/docs/android/
         [COMMANDS]
             o) apktool d path/to/your/app_name.apk (decompiles .dex files to .smali)
             o) apktool d --no-src app_name.apk (does NOT decompile .dex files to .smali)
-        [INFO]:
+        [INFO]
             -) not all files do get extracted: i.e certs + signature files & more are nissing
 
     DEX2JAR
