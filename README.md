@@ -341,7 +341,7 @@ i) apk decompiler for lazy: https://github.com/b-mueller/apkx
                 4) Sign apk: 
                     4.1) create key: keytool -genkey -v -keystore my-release-key.keystore -alias myalias  -keyalg RSA -keysize 2048 -validity 10000
                         !) remember the password you used
-                    4.2) sign apk: /home/<user>/Android/Sdk/build-tools/<27.0.3_OR_CHECK_YOUR_USED_VERSION>/apksigner sign --ks my-release-key.keystore ./modified_app_project_dir/dist/modified_app.apk
+                    4.2) sign apk: /home/&lt;user&gt;/Android/Sdk/build-tools/&lt;27.0.3_OR_CHECK_YOUR_USED_VERSION&gt;/apksigner sign --ks my-release-key.keystore ./modified_app_project_dir/dist/modified_app.apk
                 5) install apk on device: adb install /path/to/modified_app.apk
         
         [INFO]
