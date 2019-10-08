@@ -35,7 +35,6 @@ i) apk decompiler for lazy: https://github.com/b-mueller/apkx
 <b>==========================================================================
 ===================== 1) MANUAL STATIC ANALYSIS ==========================
 ==========================================================================</b>
-
 <i>////////////////
 1a) RETRIEVE APK
 ////////////////</i>
@@ -307,8 +306,61 @@ i) apk decompiler for lazy: https://github.com/b-mueller/apkx
                 o) ANYTHING which indicates a communication to a backend/api or might be stored locally
             o) check proxy and look for suspicious behaviour, requests, new/different endpoints & so on ...
 
+<i>/////////////////////
+3c) BYPASS DETECTIONS
+/////////////////////</i>
+
+    [SSL PINNING]
+        !!! TBD soon !!! 
+
+    [ROOT DETECTION]
+        !!! TBD soon !!!
+
+    [EMULATOR DETECTION]
+        [COMMANDS]
+            CHECK IF ONE IS PRESENT
+                -) grep -Ei "isEmulator" -Ei "root" -Ei "carrierNameFromTelephonyManager" -Ei "smellsLikeAnEmulator" -Ei "SystemProperties" -R . (known methods)
+                -) grep -Ei "build.fingerprint" -Ei "build.hardware" -Ei "product.kernel" -Ei "product.brand" -Ei "product.name" -Ei "product.model" -Ei "product.manufacturer" -Ei "product.device" -Ei "Emulator" -Ei "qemu.hw.mainkeys" -Ei "bootloader" -Ei "bootmode" -Ei "secure" -Ei "build.version.sdk" -R .
+                -) grep -Ei "generic" -Ei "unknown" -Ei "google_sdk" -Ei "Android SDK built for x86" -Ei "Genymotion" -Ei "google_sdk" -Ei "goldfish" -R .
+            
+            BYPASS IT (IF PRESENT)
+                1) check AVD || rooted device "values (depending what the code is demanding, you might need to modify them)
+                    -) adb shell getprop ro.product.name
+                    -) adb shell getprop ro.product.device
+                    -) adb shell getprop ro.product.model
+                    -) adb shell getprop ro.kernel.qemu
+                    -) adb shell getprop ro.hardware
+                    -) adb shell getprop qemu.hw.mainkeys
+                    -) adb shell getprop ro.bootloader
+                    -) adb shell getprop ro.bootmode
+                    -) adb shell getprop ro.secure
+                    -) adb shell getprop ro.build.fingerprint
+                    -) adb shell getprop ro.build.version.sdk
+                2) Modify the code, so YOUR values will pass the test || delete the whole validation (if possible)
+                3) Recompile: apktool b ./modified_app_project_dir
+                4) Sign apk: 
+                    4.1) create key: keytool -genkey -v -keystore my-release-key.keystore -alias myalias  -keyalg RSA -keysize 2048 -validity 10000
+                        !) remember the password you used
+                    4.2) sign apk: /home/<user>/Android/Sdk/build-tools/<27.0.3_OR_CHECK_YOUR_USED_VERSION>/apksigner sign --ks my-release-key.keystore ./modified_app_project_dir/dist/modified_app.apk
+                5) install apk on device: adb install /path/to/modified_app.apk
+        
+        [INFO]
+            !) No 100% success guaranteed:
+                !) there might be fancy solutions out there (appreciate any input here!!)
+                !) In case of heavy obfuscation --> good look with that
+                !) Very often the app will be delivered with a root detection as well
+            !) The grep commands above search for known method-names or values which might get executed/checked on app-startup
+        
+        [MORE DETAILS]
+            ?) <a href="https://www.juanurs.com/Bypassing-Android-Anti-Emulation-Part-I/" targer="_blank">Bypassing Android Emulator Part I</a>
+            ?) <a href="https://www.juanurs.com/Bypassing-Android-Anti-Emulation-Part-II/" targer="_blank">Bypassing Android Emulator Part II</a>
+            ?) <a href="https://www.juanurs.com/Bypassing-Android-Anti-Emulation-Part-III/" targer="_blank">Bypassing Android Emulator Part III</a> 
+           
+        [THINGS TO REPORT]
+            !) Bypassing the emulator detection is possible by simple code-tampering
+
 <i>/////////////////////////
-3c) ANALYZE LOCAL STORAGE
+3d) ANALYZE LOCAL STORAGE
 /////////////////////////</i>
 
     [COMMANDS]
@@ -347,7 +399,7 @@ i) apk decompiler for lazy: https://github.com/b-mueller/apkx
         ?) <a href="https://steemit.com/penetration/@surajraghuvanshi/data-storage-security-on-android" target="_blank">data storage security on android</a>
 
 <i>//////////////////
-3d) ATTACK SURFACE
+3e) ATTACK SURFACE
 //////////////////</i>
 
     ----------------
@@ -434,7 +486,7 @@ i) apk decompiler for lazy: https://github.com/b-mueller/apkx
         ?) <a href="https://cyberincision.com/2017/09/13/android-app-hacking-with-drozer-usage/" target="_blank">App hacking with drozer</a>
 
 <i>////////////////
-3e) LOG ANALYSIS
+3f) LOG ANALYSIS
 ////////////////</i>
 
     [COMMANDS]
