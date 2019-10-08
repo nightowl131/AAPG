@@ -19,7 +19,6 @@ i) apk decompiler for lazy (https://github.com/b-mueller/apkx)
 ==========================================================================
 ===================== 1) MANUAL STATIC ANALYSIS ==========================
 ==========================================================================
-
 ////////////////
 1a) RETRIEVE APK
 ////////////////
@@ -206,7 +205,7 @@ i) apk decompiler for lazy (https://github.com/b-mueller/apkx)
         !) Credentials cracked (brute-force, guessing, decrypted with stored cryptographic-key, ...)
         !) File permission MODE_WORLD_READABLE / MODE_WORLD_WRITEABLE (other apps/users are able to read/write)
         !) If http is in use (no SSL)
-        !) Anything that shouldn't be there (debug info, comments wiht info disclosure, ...)
+        !) Anything that shouldn't be there (debug info, comments with info disclosure, ...)
 
 ==========================================================================
 =================== 2) AUTOMATED STATIC ANALYSIS =========================
@@ -225,11 +224,10 @@ i) apk decompiler for lazy (https://github.com/b-mueller/apkx)
 ==========================================================================
 ===================== 3) MANUAL DYNAMIC ANALYSIS =========================
 ==========================================================================
+/////////////////
+3a) PREREQUISITES
+/////////////////
 
-/////////////////
-3a) prerequisites
-/////////////////
-        
     [PROXY]
         -) Install Burp-Suite (recommended): https://portswigger.net/burp/communitydownload
     
@@ -295,13 +293,66 @@ i) apk decompiler for lazy (https://github.com/b-mueller/apkx)
             o) Log in -> Browse around -> load content & so on ...
             o) Look for:
                 o) File up/download
-                    o) try to bypass fileupload/-filter (often there is only a client-side validation only)
+                    o) try to bypass fileupload/-filter (often there is only a client-side validation)
                 o) Activity behaviour & functionality
                 o) ANYTHING which indicates a communication to a backend/api or might be stored locally
             o) check proxy and look for suspicious behaviour, requests, new/different endpoints & so on ...
 
+/////////////////////
+3c) BYPASS DETECTIONS
+/////////////////////
+
+    [SSL PINNING]
+        !!! TBD soon !!! 
+
+    [ROOT DETECTION]
+        !!! TBD soon !!!
+
+    [EMULATOR DETECTION]
+        [COMMANDS]
+            CHECK IF ONE IS PRESENT
+                -) grep -Ei "isEmulator" -Ei "root" -Ei "carrierNameFromTelephonyManager" -Ei "smellsLikeAnEmulator" -Ei "SystemProperties" -R . (known methods)
+                -) grep -Ei "build.fingerprint" -Ei "build.hardware" -Ei "product.kernel" -Ei "product.brand" -Ei "product.name" -Ei "product.model" -Ei "product.manufacturer" -Ei "product.device" -Ei "Emulator" -Ei "qemu.hw.mainkeys" -Ei "bootloader" -Ei "bootmode" -Ei "secure" -Ei "build.version.sdk" -R .
+                -) grep -Ei "generic" -Ei "unknown" -Ei "google_sdk" -Ei "Android SDK built for x86" -Ei "Genymotion" -Ei "google_sdk" -Ei "goldfish" -R .
+            
+            BYPASS IT (IF PRESENT)
+                1) check AVD || rooted device "values (depending what the code is demanding, you might need to modify them)
+                    -) adb shell getprop ro.product.name
+                    -) adb shell getprop ro.product.device
+                    -) adb shell getprop ro.product.model
+                    -) adb shell getprop ro.kernel.qemu
+                    -) adb shell getprop ro.hardware
+                    -) adb shell getprop qemu.hw.mainkeys
+                    -) adb shell getprop ro.bootloader
+                    -) adb shell getprop ro.bootmode
+                    -) adb shell getprop ro.secure
+                    -) adb shell getprop ro.build.fingerprint
+                    -) adb shell getprop ro.build.version.sdk
+                2) Modify the code, so YOUR values will pass the test || delete the whole validation (if possible)
+                3) Recompile: apktool b ./modified_app_project_dir
+                4) Sign apk: 
+                    4.1) create key: keytool -genkey -v -keystore my-release-key.keystore -alias myalias  -keyalg RSA -keysize 2048 -validity 10000
+                        !) remember the password you used
+                    4.2) sign apk: /home/<user>/Android/Sdk/build-tools/<27.0.3_OR_CHECK_YOUR_USED_VERSION>/apksigner sign --ks my-release-key.keystore ./modified_app_project_dir/dist/modified_app.apk
+                5) install apk on device: adb install /path/to/modified_app.apk
+        
+        [INFO]
+            !) No 100% success guaranteed:
+                !) there might be fancy solutions out there (appreciate any input here!!)
+                !) In case of heavy obfuscation --> good look with that
+                !) Very often the app will be delivered with a root detection as well
+            !) The grep commands above search for known method-names or values which might get executed/checked on app-startup
+        
+        [MORE DETAILS]
+            ?) https://www.juanurs.com/Bypassing-Android-Anti-Emulation-Part-I/
+            ?) https://www.juanurs.com/Bypassing-Android-Anti-Emulation-Part-II/
+            ?) https://www.juanurs.com/Bypassing-Android-Anti-Emulation-Part-III/
+           
+        [THINGS TO REPORT]
+            !) Bypassing the emulator detection is possible by simple code-tampering
+
 /////////////////////////
-3c) ANALYZE LOCAL STORAGE
+3d) ANALYZE LOCAL STORAGE
 /////////////////////////
 
     [COMMANDS]
@@ -340,7 +391,7 @@ i) apk decompiler for lazy (https://github.com/b-mueller/apkx)
         ?) https://steemit.com/penetration/@surajraghuvanshi/data-storage-security-on-android
 
 //////////////////
-3d) ATTACK SURFACE
+3e) ATTACK SURFACE
 //////////////////
     ----------------
     AT THE BEGINNING
@@ -426,7 +477,7 @@ i) apk decompiler for lazy (https://github.com/b-mueller/apkx)
         ?) https://cyberincision.com/2017/09/13/android-app-hacking-with-drozer-usage/
 
 ////////////////
-3e) LOG ANALYSIS
+3f) LOG ANALYSIS
 ////////////////
 
     [COMMANDS]
@@ -484,6 +535,8 @@ i) apk decompiler for lazy (https://github.com/b-mueller/apkx)
             -) Guide I excerpted - worked multiple times at work: https://null-byte.wonderhowto.com/how-to/embed-metasploit-payload-original-apk-file-part-2-do-manually-0167124/
 
     XAMARIN APPS
+        ?) Simply with msfvenom? --> test it
+            (https://hydrasky.com/mobile-security/injecting-metasploit-payloads-into-file-apk-android-application/)
         ?) !!! TBD !!! - dll-injection? I was not able to find anything useful - appreciate any input here!! 
 
     [THINGS TO REPORT]
@@ -493,10 +546,10 @@ i) apk decompiler for lazy (https://github.com/b-mueller/apkx)
 4b) OTHER WAYS TO BACKDOOR AN APP
 /////////////////////////////////
 
-    !!! TBD !!! - appreciate any input here!! 
+    !!! TBD !!! - appreciate any input here!!
 
 ///////////////
 4c) ANDROID NDK
 ///////////////
 
-    !!! TBD !!! - appreciate any input here!! 
+    !!! TBD !!! - appreciate any input here!!
