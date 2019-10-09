@@ -5,6 +5,8 @@ This is an operational guide with the intention to assist you while performing a
 I will provide what I've learned / will learn at work and share it here with you.
 To improve this guide, I would highly appreciate your help with everything you have successfully used in the wild and/or experienced so far at work. 
 <br><br>
+    <a href="https://nightowl131.gitbook.io/aapg/" target="_blank">Gitbook-Link</a>
+<br><br>
 I followed this <a href="https://www.owasp.org/index.php/OWASP_Mobile_Security_Testing_Guide" alt="owasp-url">OWASP Mobile Security Testing Guide</a> and tried to summarize it. 
 <br>
 <br>
